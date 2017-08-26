@@ -26,14 +26,14 @@ Build a Library class.
 
 A library has a list of books, a list of patrons, a name, the following functionality:
 
-	*. the ability to add a new book to the library
-	*. the ability to add a new patron to the library
-	*. the ability to retrieve all the books of the library
-	*. the ability to retrieve all *available* books of the library
-	*. the ability to retrieve all the patrons of the library
-	*. the ability to retrieve all the patrons who are allowed to check out another book
-	*. the ability to check out a book to a patron (the book is marked as unavailable, and the book is added to the patron's checked out books - but only if a patron is allowed to check out and additional book)
-	*. the ability to return a checked out book to the library (the book is marked as available, and the book is removed from the patron's checked out books)
+- the ability to add a new book to the library
+- the ability to add a new patron to the library
+- the ability to retrieve all the books of the library
+- the ability to retrieve all *available* books of the library
+- the ability to retrieve all the patrons of the library
+- the ability to retrieve all the patrons who are allowed to check out another book
+- the ability to check out a book to a patron (the book is marked as unavailable, and the book is added to the patron's checked out books - but only if a patron is allowed to check out and additional book)
+- the ability to return a checked out book to the library (the book is marked as available, and the book is removed from the patron's checked out books)
 
 If you want to move the functionality into a separate LibraryService class, you may. It's up to you.
 
