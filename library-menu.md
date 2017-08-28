@@ -19,7 +19,11 @@ A Book should have a title, an author, and a way to see if the book is checked o
 ### Step 3
 Build a Patron class.
 
-A Patron has a name (first name and last name), a unique library card number, a list of checked out books, and a way to see if a patron can check out an additional book. A patron can only checkout 5 books at one time.
+A Patron has a name (first name and last name), a library card number, a list of checked out books, and a way to see if a patron is allowed to check out more books. 
+
+BUSINESS RULES: 
+* Library card numbers must be unique 
+* A patron can only have 5 books checked out at one time
 
 ### Step 4
 Build a Library class.
@@ -28,12 +32,16 @@ A library has a list of books, a list of patrons, a name, the following function
 
 - the ability to add a new book to the library
 - the ability to add a new patron to the library
-- the ability to retrieve all the books of the library
-- the ability to retrieve all *available* books of the library
+- the ability to retrieve all the books in the library
+- the ability to retrieve all *available* books in the library
 - the ability to retrieve all the patrons of the library
-- the ability to retrieve all the patrons who are allowed to check out another book
-- the ability to check out a book to a patron (the book is marked as unavailable, and the book is added to the patron's checked out books - but only if a patron is allowed to check out and additional book)
-- the ability to return a checked out book to the library (the book is marked as available, and the book is removed from the patron's checked out books)
+- the ability to retrieve all the patrons who can checkout additional books
+- the ability to check out a book to a patron 
+	- the book should be marked as unavailable
+	- the book should be added to the patron's checked out books
+- the ability to return a checked out book to the library 
+	- the book is marked as available
+	- the book is removed from the patron's checked out books)
 
 If you want to move the functionality into a separate LibraryService class, you may. It's up to you.
 
@@ -73,32 +81,30 @@ Implement menu option 2 (see all patrons).
 
 When a user selects option 2, display all patrons in the library in this format:
 ```
-{patron.FirstName} {patron.LastName} - {patron.libraryCardNumber}
+{patron.FirstName} {patron.LastName} - {patron.LibraryCardNumber}
 ```
 
 ### Step 7
 Implement menu option 3 (add new book).
 
-Ask the user to provide the new book's title and author. Use those to create a new Book and add it to the library's book list.
+Ask the user to provide the new book's title and author. Create the new Book and add it to the library's book list.
 
 ### Step 8
 Implement menu option 4 (add a new patron)
 
-Ask the user for the patron's name and generate the patron's library card number.
+Ask the user for the patron's name and generate the patron's unique library card number.
 
 (**Pro Tip** - 
-It might be hard to keep up with what number you are on for generating library card numbers. You can get around that by giving it a unique value.
+It might be hard to keep up with what number you are on for generating library card numbers (if you are using an `int`). You can get around that by giving making the library card number a unique `string` instead.
 
-You can create a unique value from their data {patronlastname}-{currentTimeInMinutes}{inSeconds}{inMilliseconds} - which would generate something like williams-265319  
-
-As long as the value is unique enough for this project, you should be fine.)
+You can create a unique value from their data {patronlastname}-{currentTimeInMinutes}{inSeconds}{inMilliseconds} - which would generate something like williams-265319. It's up to you.)
 
 ### Step 9
 Implement menu option 5 (check out book to patron)
 
 In order to implement this option, follow these steps:
 1. List all the patrons in the library that can check out another book (remember, if they have 5 checked out, they cannot checkout another book)
-2. Have the user choose which patron (optionally, you can have them choose by library card number)
+2. Have the user choose which patron is checking out the book (optionally, you can have them choose by library card number)
 3. List all the books in the library that are available (not checked out by another patron).
 6. Have the user select the book to add to the patron.
 7. Add the book to the patron's list of checked out books and mark the book as not available.
